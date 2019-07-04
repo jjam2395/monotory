@@ -6,6 +6,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
+import { ProductosComponent } from './productos/productos.component';
+import { OrdenesComponent } from './ordenes/ordenes.component';
+import { AddClienteComponent } from './add-cliente/add-cliente.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 
 
@@ -13,7 +19,10 @@ import { SharedModule } from '../shared/shared.module';
     declarations: [
         PagesComponent,
         DashboardComponent,
-        ClientesComponent
+        ClientesComponent,
+        ProductosComponent,
+        OrdenesComponent,
+        AddClienteComponent
     ],
     exports: [
         PagesComponent,
@@ -22,7 +31,10 @@ import { SharedModule } from '../shared/shared.module';
     ],
     imports: [
         SharedModule,
-        PAGES_ROUTES
+        ReactiveFormsModule,
+        PAGES_ROUTES,
+        CommonModule,
+        FormsModule
     ]
 })
 

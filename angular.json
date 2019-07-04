@@ -88,7 +88,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.css",
+              "node_modules/@fortawesome/fontawesome-free/scss/regular.css", 
+              "node_modules/@fortawesome/fontawesome-free/scss/solid.css", 
+              "node_modules/@fortawesome/fontawesome-free/scss/brands.scss"
             ],
             "scripts": []
           }

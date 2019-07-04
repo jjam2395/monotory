@@ -1,3 +1,97 @@
-<p>
-  clientes works!
-</p>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  
+<h3 class="card-title">Clientes</h3>
+
+</div>
+
+<div  class="row animated fadeIn mb-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <input #input   (keyup)="buscarClientes( input.value )" class="form-control form-control-dark w-100" type="text" placeholder="Introducir telefono para buscar cliente" aria-label="buscar">
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div *ngIf="cargando" class="row animated fadeIn">
+  <div class="col-sm-12">
+    <div class="alert alert-warning text-center">
+      <strong>Cargando</strong>
+      <br>
+      <br>
+      <i class="fas fa-spinner fa-spin fa-2x"></i>
+      <br>
+      <br>
+      <span>Espere por favor</span>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!cargando" class="row animated fadeIn">
+
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h4 class="card-title">Clientes Registrados( <small>{{totalRegistros}}</small> )</h4>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group mr-2">
+                  <button  (click)="editable=true;"  type="button" class="btn btn-sm btn-warning m-1">Editar Clientes</button>
+                  <button  routerLink="/addcliente" type="button" class="btn btn-sm btn-primary m-1">Agregar Cliente</button>
+                </div>
+              </div>
+          </div>
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre(s)</th>
+              <th scope="col">Apellidos(s)</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr *ngFor="let cliente of clientes; let i=index;">
+                
+              <th scope="row">{{i+1}}</th>
+              <td> <span *ngIf="!editable"> {{cliente.nombreCliente}} </span>
+                  <input [(ngModel)]="cliente.nombreCliente" *ngIf="editable" class=" edit-input form-control form-control-dark w-100" input [value]=cliente.nombreCliente type="text" required name="nombreCliente">
+              </td>
+              <td> <span *ngIf="!editable"> {{cliente.apellidoCliente}} </span>
+                <input [(ngModel)]="cliente.apellidoCliente" *ngIf="editable" class=" edit-input form-control form-control-dark w-100" input [value]=cliente.apellidoCliente type="text" required name="apellidoCliente">
+            </td>
+            <td> <span *ngIf="!editable"> {{cliente.telefonoCliente}} </span>
+              <input  [(ngModel)]="cliente.telefonoCliente" *ngIf="editable" class=" edit-input form-control form-control-dark w-100" input [value]=cliente.telefonoCliente type="text" required name="telefonoCliente">
+            </td>
+            <td> <span *ngIf="!editable"> {{cliente.emailCliente}} </span>
+              <input [(ngModel)]="cliente.emailCliente" *ngIf="editable" class=" edit-input form-control form-control-dark w-100" input [value]=cliente.emailCliente type="text" required name="emailCliente">
+            </td>
+              <td>
+                <div class="action-buttons">
+                  <button (click)="editable=true;"  class="btn btn-warning m-1"><i class="fas fa-edit"></i></button>
+                  <button (click)="actualizarCliente(cliente)"  class="btn btn-success m-1"><i class="fas fa-save"></i></button>
+                  <button (click)="borrarCliente(cliente)" class="btn btn-danger m-1"><i class="fas fa-trash"></i></button>
+                </div>
+
+              </td>
+    
+            </tr>
+           
+          </tbody>
+        </table>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

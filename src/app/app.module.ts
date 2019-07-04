@@ -7,13 +7,19 @@ import { APP_ROUTES } from './app.routes';
 
 // Modules
 import { PagesModule } from './pages/pages.module';
-
-import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+// Services
+import { ServiceModule } from './services/service.module';
+
+
+// Components
+import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
+
 
 
 
@@ -23,13 +29,16 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
     AppComponent,
     LoginComponent,
     NopagefoundComponent,
-    SignupComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     APP_ROUTES,
     PagesModule,
-    SharedModule
+    SharedModule,
+    ServiceModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
